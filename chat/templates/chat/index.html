@@ -21,7 +21,13 @@
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
-      <span class="mdl-layout-title">Welcome, {{ request.user.first_name }}</span>
+      <span class="mdl-layout-title">
+          {% if request.user.is_authenticated %}
+          Welcome, {{ request.user.first_name }}
+          {% else %}
+            Pleas log in or register!
+          {% endif %}
+      </span>
       <!-- Add spacer, to align navigation to the right -->
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
@@ -40,24 +46,35 @@
   <main class="mdl-layout__content">
     <div class="page-content">
 
+    {% if request.user.is_authenticated %}
+
         {% for message in messages %}
         <div>
             <small class="color-gray">{{ message.created_at }}</small> {{ message.author.first_name }}: <i>{{ message.text }}</i>
         </div>
         {% endfor %}
 
-    <form action="/chat/" method="post">
-        {% csrf_token %}
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" name="textmessage" type="text" id="sample3">
-        <label class="mdl-textfield__label" for="sample3">Text...</label>
-      </div>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-      Send
-    </button>
 
-    </form>
 
+        <form action="/chat/" method="post">
+            {% csrf_token %}
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" name="textmessage" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Text...</label>
+                  </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                  Send
+                </button>
+
+        </form>
+
+    {% else %}
+        <h1> You are not logged in </h1>
+        <p>
+            <a href="/login/">Login</a> or <a href="/register/">Register</a>
+        </p>
+
+    {% endif %}
 
 
     </div>
