@@ -26,3 +26,7 @@ def login_view(request):
         else:
             return render(request, 'auth/login.html', {'wrongPassword': True, 'redirect': redirect})
     return render(request, 'auth/login.html', {'redirect': redirect})
+
+
+def register_view(request):
+    return render(request, 'auth/register.html' )
