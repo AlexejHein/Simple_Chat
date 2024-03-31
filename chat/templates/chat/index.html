@@ -9,6 +9,9 @@
         .page-content{
             padding: 100px 300px;
         }
+        .color-gray{
+            color: gray;
+        }
     </style>
     <title>Title</title>
 </head>
@@ -36,6 +39,13 @@
   </div>
   <main class="mdl-layout__content">
     <div class="page-content">
+
+        {% for message in messages %}
+        <div>
+            <small class="color-gray">{{ message.created_at }}</small> {{ message.author.first_name }}: <i>{{ message.text }}</i>
+        </div>
+        {% endfor %}
+
     <form action="/chat/" method="post">
         {% csrf_token %}
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
