@@ -1,9 +1,15 @@
 window.onload = function() {
-    let chatContent = document.querySelector('.chat-content');
-    chatContent.scrollTop = chatContent.scrollHeight;
+    setTimeout(scrollToEnd, 100);
 }
 
-function scroll(){
+function scrollToEnd() {
     let chatContent = document.querySelector('.chat-content');
-    chatContent.scrollTop = 0;
+    if (chatContent) {
+        chatContent.scrollTop = chatContent.scrollHeight;
+    }
 }
+
+document.querySelector('.sand-box form').addEventListener('submit', function(event) {
+    setTimeout(scrollToEnd, 10);
+});
+
