@@ -2,11 +2,30 @@
     padding: 100px 300px;
 }
 .color-gray{
-    color: gray;
+    color: rgb(128, 128, 128);
 }
-div{
-    margin: 10px;
+form{
+    max-width: 300px;
 }
-.m-10{
-    margin: 10px;
+.chat-content{
+    height: 50vh;
+    overflow-y: scroll;
+}
+.chat-box{
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.sand-box {
+    position: fixed;
+    width: 50%;
+    bottom: 10px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
 }

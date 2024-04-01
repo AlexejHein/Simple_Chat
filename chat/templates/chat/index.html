@@ -1,27 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% if request.user.is_authenticated %}
+    <div class="chat-content">
+        {% if request.user.is_authenticated %}
 
-        {% for message in messages %}
-        <div>
-            <small class="color-gray">{{ message.created_at }}</small> {{ message.author.first_name }}: <i>{{ message.text }}</i>
-        </div>
-        {% endfor %}
+            {% for message in messages %}
+            <div class="chat-box">
+                <small class="color-gray">{{ message.created_at }} {{ message.author.first_name }}:</small>
+                <br>
+                <i>{{ message.text }}</i>
+            </div>
+            {% endfor %}
+    </div>
 
 
-
+    <div class="sand-box">
         <form action="/chat/" method="post">
             {% csrf_token %}
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" name="textmessage" type="text" id="sample3">
                     <label class="mdl-textfield__label" for="sample3">Text...</label>
                   </div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <button onclick="scroll()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                   Send
                 </button>
-
         </form>
+    </div>
 
     {% else %}
         <h1> You are not logged in </h1>

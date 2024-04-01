@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from .models import Message, Chat
 
 
@@ -17,7 +17,7 @@ def index(request):
 
 
 def login_view(request):
-    redirect = request.GET.get('next')
+    redirect = request.GET.get('next', '/')
     if request.method == 'POST':
         user = authenticate(username=request.POST.get('username'), password=request.POST.get('password'))
         if user:
@@ -30,3 +30,8 @@ def login_view(request):
 
 def signup_view(request):
     return render(request, 'auth/signup.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login/')
