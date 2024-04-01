@@ -12,10 +12,19 @@
         {% csrf_token %}
         <input type="hidden" name="redirect" value="{{ redirect }}">
         <div>
-            <input name="username" type="text">
-            <input name="password" type="password">
-            <button class="mdl-button"  type="submit">Login</button>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="sample3" name="username">
+                <label class="mdl-textfield__label" for="sample3">Username</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="password" id="sample3" name="password">
+                <label class="mdl-textfield__label" for="sample3">Password</label>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored m-10"  type="submit">Login</button>
         </div>
     </form>
-    <a href="/register/">Register</a>
+    <br>
+    <p>
+     or   <a href="/register/">Register</a>
+    </p>
 {% endblock %}

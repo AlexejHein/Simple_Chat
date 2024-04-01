@@ -28,5 +28,5 @@ def login_view(request):
     return render(request, 'auth/login.html', {'redirect': redirect})
 
 
-def register_view(request):
-    return render(request, 'auth/register.html' )
+def signup_view(request):
+    return render(request, 'auth/signup.html')
