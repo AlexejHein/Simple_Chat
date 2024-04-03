@@ -38,21 +38,23 @@ async function loadMessages() {
 
 async function sendMessage(event) {
     event.preventDefault();
+    let currentUsername = document.getElementById('currentUsername').innerText;
     const form = document.getElementById('sendMessageForm');
     const messageField = document.getElementById('messageField');
     const text = messageField.value;
     const messageDisplay = document.createElement('div');
     messageDisplay.className = 'chat-box temp-message';
-    messageDisplay.innerHTML = `<small class="color-gray">${new Date().toLocaleTimeString()} Me:</small><br>${text}`;
+    messageDisplay.innerHTML = `<small class="color-gray">${new Date().toLocaleTimeString()} ${currentUsername}</small><br>${text}`;
     document.getElementById('messages').appendChild(messageDisplay);
     scrollToEnd();
+    await loadMessages();
 
     const fd = new FormData(form);
     fd.append('textmessage', text);
     fetch('/chat/', {
         method: 'POST',
         body: fd
-    }).then(response => {
+    }).then(async response => {
         if (response.ok) {
             messageDisplay.classList.remove('temp-message');
         } else {
