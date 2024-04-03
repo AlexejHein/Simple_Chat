@@ -21,7 +21,7 @@ async function loadMessages() {
             const messageElement = document.createElement('div');
             messageElement.className = 'chat-box';
             // Add class based on author
-            if (message.author === currentUsername) { // Replace 'YourUsername' with the actual username
+            if (message.author === currentUsername) {
                 messageElement.classList.add('own-message');
             } else {
                 messageElement.classList.add('other-message');
