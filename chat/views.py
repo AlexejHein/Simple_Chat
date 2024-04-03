@@ -7,6 +7,13 @@ from .models import Message, Chat
 
 
 @login_required(login_url='/login/')
+def get_current_user(request):
+    if request.user.is_authenticated:
+        return JsonResponse({'username': request.user})
+    else:
+        return JsonResponse({'error': 'Unauthorized'}, status=401)
+
+
 def index(request):
     if request.method == 'POST':
         print(request.POST.get('textmessage'))
@@ -53,7 +60,7 @@ def get_messages(request):
             'id': message.id,
             'text': message.text,
             'author': message.author.username,
-            'created_at': message.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            'created_at': message.created_at.strftime('%Y-%m-%d %H:%M')
         } for message in messages]
 
         return JsonResponse({'messages': messages_data})

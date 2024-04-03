@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from chat.views import index, login_view, signup_view, logout_view, get_messages
+from chat.views import index, login_view, signup_view, logout_view, get_messages, get_current_user
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,6 @@ urlpatterns = [
     path('signup/', signup_view),
     path('logout/', logout_view),
     path('chat/get_messages/', get_messages),
+    path('get_current_user/', get_current_user),
+
 ]

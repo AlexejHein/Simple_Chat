@@ -1,7 +1,29 @@
+let currentUsername = '';
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('sendMessageForm');
     form.addEventListener('submit', sendMessage);
 
+    loadMessages().then(r => {});
+});
+
+async function getCurrentUser() {
+    try {
+        const response = await fetch('/chat/get_current_user/');
+        if (!response.ok) {
+            throw new Error('Network response was not ok.');
+        }
+        const data = await response.json();
+        currentUsername = data.username;
+    } catch (error) {
+        console.error('Failed to get current user:', error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+    const form = document.getElementById('sendMessageForm');
+    form.addEventListener('submit', sendMessage);
+
+    await getCurrentUser();
     loadMessages().then(r => {});
 });
 
@@ -18,6 +40,12 @@ async function loadMessages() {
             const messageElement = document.createElement('div');
             console.log(message);
             messageElement.className = 'chat-box';
+            // Add class based on author
+            if (message.author === currentUsername) { // Replace 'YourUsername' with the actual username
+                messageElement.classList.add('own-message');
+            } else {
+                messageElement.classList.add('other-message');
+            }
             const createdAt = new Date(message.created_at).toLocaleString();
             messageElement.innerHTML = `<small class="color-gray">${createdAt} ${message.author}:</small><br><i>${message.text}</i>`;
             messagesContainer.appendChild(messageElement);

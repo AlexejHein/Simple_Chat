@@ -1,5 +1,5 @@
 .page-content{
-    padding: 100px 300px;
+    width: 80%;
 }
 .color-gray{
     color: rgb(128, 128, 128);
@@ -8,24 +8,41 @@ form{
     max-width: 300px;
 }
 .chat-content{
+    width: 100vw;
     height: 50vh;
     overflow-y: scroll;
 }
 .chat-box{
-    max-width: 500px;
+    max-width: 300px;
     margin: 10px auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 5px 5px 5px 0;
+    border-radius: 0 15px 15px 15px;
     background-color: #f9f9f9;
 }
-.sand-box {
+.send-box {
     position: fixed;
-    width: 50%;
+    width: 300px;
     bottom: 10px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #ffffff;
+}
+#messages{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.own-message {
+    text-align: right;
+    margin-left: 20%;
+}
+
+.other-message {
+    text-align: left;
+    margin-right: 20%;
 }
