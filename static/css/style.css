@@ -7,6 +7,16 @@
 form{
     max-width: 300px;
 }
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .chat-content{
     width: 100vw;
     height: 50vh;
@@ -22,9 +32,9 @@ form{
 }
 .send-box {
     position: fixed;
-    width: 300px;
+    width: 90%;
     bottom: 10px;
-    margin: 0 auto;
+    margin: 10px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -45,4 +55,9 @@ form{
 .other-message {
     text-align: right;
     margin-right: 20%;
+    border-radius: 15px 0 15px 15px!important;
+}
+.material-symbols-outlined {
+    font-size: 1.5em;
+    color: #000;
 }

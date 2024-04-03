@@ -43,7 +43,7 @@ async function sendMessage(event) {
     const text = messageField.value;
     const messageDisplay = document.createElement('div');
     messageDisplay.className = 'chat-box temp-message';
-    messageDisplay.innerHTML = `<small class="color-gray">${new Date().toLocaleTimeString()} Me:</small><br><i>${text}</i>`;
+    messageDisplay.innerHTML = `<small class="color-gray">${new Date().toLocaleTimeString()} Me:</small><br>${text}`;
     document.getElementById('messages').appendChild(messageDisplay);
     scrollToEnd();
 
