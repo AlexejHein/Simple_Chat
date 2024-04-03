@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Message, Chat
@@ -44,3 +44,19 @@ def signup_view(request):
 def logout_view(request):
     logout(request)
     return redirect('/login/')
+
+
+def get_messages(request):
+    if request.user.is_authenticated:
+        messages = Message.objects.all().order_by('-created_at')[:50]
+        messages_data = [{
+            'id': message.id,
+            'text': message.text,
+            'author': message.author.username,
+            'created_at': message.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        } for message in messages]
+
+        return JsonResponse({'messages': messages_data})
+
+    else:
+        return JsonResponse({'error': 'Unauthorized'}, status=401)
