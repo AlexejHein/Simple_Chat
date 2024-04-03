@@ -38,11 +38,11 @@ form{
     justify-content: center;
 }
 .own-message {
-    text-align: right;
+    text-align: left;
     margin-left: 20%;
 }
 
 .other-message {
-    text-align: left;
+    text-align: right;
     margin-right: 20%;
 }

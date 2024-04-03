@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-
+<h3 style="display: none" id="currentUsername">{{ request.user }}</h3>
 <div class="chat-content">
     {% if request.user.is_authenticated %}
         <div id="messages">
