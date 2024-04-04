@@ -27,7 +27,7 @@ async function loadMessages() {
                 messageElement.classList.add('other-message');
             }
             const createdAt = new Date(message.created_at).toLocaleString();
-            messageElement.innerHTML = `<small class="color-gray">${createdAt} ${message.author}:</small><br><i>${message.text}</i>`;
+            messageElement.innerHTML = `<small class="color-gray">${createdAt} ${message.author}:</small><br>${message.text}`;
             messagesContainer.appendChild(messageElement);
         });
     } catch (error) {

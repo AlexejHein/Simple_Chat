@@ -26,9 +26,9 @@ span{
     max-width: 300px;
     margin: 10px auto;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 0 15px 15px 15px;
     background-color: #f9f9f9;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 .send-box {
     position: fixed;
@@ -36,9 +36,10 @@ span{
     bottom: 10px;
     margin: 10px;
     padding: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #ffffff;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+
 }
 #messages{
     width: 100%;
