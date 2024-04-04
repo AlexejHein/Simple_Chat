@@ -41,8 +41,11 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title"> Chat </span>
     <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Link</a>
-
+      {% for user in users %}
+    <li>{{ user }}</li>
+{% empty %}
+    <li>No users have registered yet.</li>
+{% endfor %}
     </nav>
   </div>
   <main class="mdl-layout__content">

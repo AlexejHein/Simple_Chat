@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('sendMessageForm');
     form.addEventListener('submit', sendMessage);
-
     loadMessages().then(r => {});
 });
 
@@ -47,7 +46,6 @@ async function sendMessage(event) {
     messageDisplay.innerHTML = `<small class="color-gray">${new Date().toLocaleTimeString()} ${currentUsername}</small><br>${text}`;
     document.getElementById('messages').appendChild(messageDisplay);
     scrollToEnd();
-    await loadMessages();
 
     const fd = new FormData(form);
     fd.append('textmessage', text);
@@ -57,6 +55,7 @@ async function sendMessage(event) {
     }).then(async response => {
         if (response.ok) {
             messageDisplay.classList.remove('temp-message');
+            await loadMessages();
         } else {
             messageDisplay.classList.add('error-message');
         }

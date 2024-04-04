@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -20,6 +21,14 @@ def index(request):
                                author=request.user, receiver=request.user)
     chatMessages = Message.objects.all()
     return render(request, 'chat/index.html', {'messages': chatMessages})
+
+
+def users_view(request):
+    """
+    View function to display all registered users.
+    """
+    users = User.objects.all()
+    return render(request, 'auth/users.html', {'users': users})
 
 
 def login_view(request):

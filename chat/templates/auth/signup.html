@@ -1,20 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Register</h2>
+    <h2>SignUp</h2>
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp m-20 p-20">
     <form method="post">
         {% csrf_token %}
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="sample3" name="username">
+                <input class="mdl-textfield__input" type="text" id="sample3" name="username" required>
                 <label class="mdl-textfield__label" for="sample3">Username</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="password" id="sample3" name="password1">
+                <input class="mdl-textfield__input" type="email" id="sample5" name="email" required>
+                <label class="mdl-textfield__label" for="sample5">Email</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="password" id="sample3" name="password1" required>
                 <label class="mdl-textfield__label" for="sample3">Password</label>
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="password" id="sample3" name="password2">
+                <input class="mdl-textfield__input" type="password" id="sample3" name="password2" required>
                 <label class="mdl-textfield__label" for="sample3">Password</label>
         </div>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored m-10"   type="submit">Register</button>
     </form>
+    </div>
 {% endblock %}
