@@ -84,7 +84,7 @@ def get_messages(request):
             'id': message.id,
             'text': message.text,
             'author': message.author.username,
-            'created_at': message.created_at.strftime('%Y-%m-%d %H:%M')
+            'created_at': message.created_at.strftime('%Y-%m-%d %H:%M:%S')  # Sekunden hinzugefügt
         } for message in messages]
 
         return JsonResponse({'messages': messages_data})

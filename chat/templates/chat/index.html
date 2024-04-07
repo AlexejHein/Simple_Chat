@@ -12,7 +12,7 @@
     <form id="sendMessageForm">
         {% csrf_token %}
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" name="textmessage" type="text" id="messageField">
+            <input class="mdl-textfield__input" name="textmessage" type="text" id="messageField" required>
             <label class="mdl-textfield__label" for="messageField">Text...</label>
         </div>
         <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">

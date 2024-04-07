@@ -10,14 +10,12 @@ class UserProfile(models.Model):
 
 
 class Chat(models.Model):
-    # users = models.ManyToManyField(User)
-    # messages = models.ManyToManyField(Message)
     created_at = models.DateField(default=date.today)
 
 
 class Message(models.Model):
     text = models.CharField(max_length=500)
-    created_at = models.DateField(default=date.today)
+    created_at = models.DateTimeField(auto_now_add=True)
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE, related_name='chat_messages_set',
                              default=None, blank=True, null=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='author_messages_set')
