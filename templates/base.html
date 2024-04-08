@@ -42,11 +42,16 @@
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title"> Chat </span>
     <nav class="mdl-navigation">
+    <p class="allUsers">All users</p>
       {% for user in users %}
-    <li>{{ user }}</li>
-{% empty %}
-    <li>No users have registered yet.</li>
-{% endfor %}
+    <li>
+        <span class="material-symbols-outlined icons">
+            account_circle
+        </span>
+        {{ user }}</li>
+    {% empty %}
+        <li>No users have registered yet.</li>
+    {% endfor %}
     </nav>
   </div>
   <main class="mdl-layout__content">

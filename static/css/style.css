@@ -81,3 +81,15 @@ span{
     display: inline;
     color: #1f60a9;
 }
+li{
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.allUsers{
+    padding-left: 20px;
+}
+.icons{
+    margin: 10px;
+}

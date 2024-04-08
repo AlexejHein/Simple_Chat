@@ -28,7 +28,7 @@ def users_view(request):
     View function to display all registered users.
     """
     users = User.objects.all()
-    return render(request, 'auth/users.html', {'users': users})
+    return render(request, 'base.html', {'users': users})
 
 
 def login_view(request):
@@ -58,11 +58,8 @@ def signup_view(request):
         form = UserCreationForm(request.POST)
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
-
         if password1 and password2 and password1 != password2:
-            # Passwörter stimmen nicht überein
             return render(request, 'auth/signup.html', {'form': form, 'error': 'The passwords do not match.'})
-
         if form.is_valid():
             user = form.save()
             login(request, user)
