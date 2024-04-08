@@ -4,6 +4,9 @@
     <div class="demo-card-wide mdl-card mdl-shadow--2dp m-20 p-20">
     <form method="post">
         {% csrf_token %}
+        {% if error %}
+            <p class="error" style="color: #6D4100">{{ error }}</p>
+        {% endif %}
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="sample3" name="username" required>
                 <label class="mdl-textfield__label" for="sample3">Username</label>
@@ -14,7 +17,7 @@
         </div>
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="password" id="sample3" name="password2" required>
-                <label class="mdl-textfield__label" for="sample3">Password</label>
+                <label class="mdl-textfield__label" for="sample3">Confirm Password</label>
         </div>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored m-10"   type="submit">Register</button>
     </form>

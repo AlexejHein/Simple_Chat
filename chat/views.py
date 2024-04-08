@@ -56,6 +56,13 @@ def signup_view(request):
     """
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+
+        if password1 and password2 and password1 != password2:
+            # Passwörter stimmen nicht überein
+            return render(request, 'auth/signup.html', {'form': form, 'error': 'The passwords do not match.'})
+
         if form.is_valid():
             user = form.save()
             login(request, user)
